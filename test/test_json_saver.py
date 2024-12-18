@@ -23,7 +23,7 @@ def test_write_data(json_saver):
 def test_get_data(json_saver):
     """ Тест утверждает, что в файле лежит одна вакансия """
 
-    assert len(json_saver.get_data()) == 0
+    assert len(json_saver.get_data) == 0
 
 
 def test_del_data(json_saver):

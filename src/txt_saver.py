@@ -15,6 +15,7 @@ class TXTSaver(Saver):
         with open(self.filename, "a", encoding="utf=8") as file:
             file.write(vacancies)
 
+
     def get_data(self):
         """Получение данных txt"""
 

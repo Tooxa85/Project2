@@ -16,7 +16,7 @@ def test_write_data(txt_saver):
 def test_get_data(txt_saver):
     """ Тест утверждает, что в файле лежит одна вакансия, состоящая из 6 строк + Пробел"""
 
-    assert len(txt_saver.get_data()) == 0
+    assert len(txt_saver.get_data) == 0
 
 
 def test_del_data(txt_saver):

@@ -34,6 +34,28 @@ class Vacancy:
 
         return self.salary_from < other.salary_from
 
+    def validate(self) -> None:
+        if not self.name or not self.alternate_url:
+            raise ValueError("Название и ссылка на вакансию обязательны.")
+
+    @staticmethod
+    def __validate(salary_from):
+        """Метод валидации зарплаты"""
+        if salary_from is None:
+            return {"from": 0, "to": 0}
+        if isinstance(salary_from, str):
+            try:
+                from_salary, to_salary = map(int, salary_from.split(" - "))
+                return {"from": from_salary, "to": to_salary}
+            except ValueError:
+                return {"from": 0, "to": 0}
+        elif isinstance(salary_from, dict):
+            from_salary = salary_from.get('from', 0)
+            to_salary = salary_from.get('to', 0)
+            return {"from": from_salary, "to": to_salary}
+        else:
+            return {"from": 0, "to": 0}
+
     @classmethod
     def from_hh_dict(cls, vacancy_data: dict) -> Any:
         """Метод возвращает экземпляр класса в виде списка"""

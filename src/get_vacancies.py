@@ -5,9 +5,9 @@ class GetVacanciesAPI(ABC):
     """Абстрактный класс для получения вакансии с hh.ru"""
 
     @abstractmethod
-    def get_response(self, keyword, per_page):
+    def get_response(self, keyword, per_page, salary_rang):
         pass
 
     @abstractmethod
-    def get_vacancies(self, keyword, per_page):
+    def get_vacancies(self, keyword, per_page, salary_rang):
         pass

@@ -14,11 +14,11 @@ class JSONSaver(Saver):
     def write_data(self, vacancies):
         """Запись данных в json"""
 
-        # data = self.get_data
-        # data.extend(vacancies)
+        data = self.get_data
+        data.extend(vacancies)
 
         with open(self.filename, "w", encoding="utf-8") as file:
-            json.dump([], file, ensure_ascii=False, indent=4)
+            json.dump(data, file, ensure_ascii=False, indent=4)
 
     def get_data(self):
         """Получение данных json"""

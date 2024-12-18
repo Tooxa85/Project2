@@ -10,9 +10,10 @@ def user_choice_json():
 
     keyword = input("Какую профессию ищите?\n").lower()
     per_page = int(input("Сколько профессии вывести?\n"))
+    salary_rang = input("Введите диапазон зарплат:\n")
 
     hh_api = HeadHunterAPI()
-    vacancies = hh_api.get_vacancies(keyword, per_page)
+    vacancies = hh_api.get_vacancies(keyword, per_page, salary_rang)
     vacancies = [Vacancy.from_hh_dict(vacancy) for vacancy in vacancies]
     vacancies = sorted(vacancies, reverse=True)
 
@@ -33,8 +34,9 @@ def user_choice_txt():
 
     keyword = input("Какую профессию ищите?\n").lower()
     per_page = int(input("Сколько профессии вывести?\n"))
+    salary_rang = input("Введите диапазон зарплат:\n")
     hh_api = HeadHunterAPI()
-    vacancies = hh_api.get_vacancies(keyword, per_page)
+    vacancies = hh_api.get_vacancies(keyword, per_page, salary_rang)
     vacancies = [Vacancy.from_hh_dict(vacancy) for vacancy in vacancies]
     vacancies = sorted(vacancies, reverse=True)
 
@@ -45,5 +47,5 @@ def user_choice_txt():
     vacancies = "\n".join(str(vacancy) for vacancy in vacancies)
     saver = TXTSaver(VACANCIES_PATH_TXT)
     saver.write_data(vacancies)
-    saver.get_data()
+    saver.get_data
     print("Данные записаны в txt-файл")
