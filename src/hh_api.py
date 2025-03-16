@@ -13,6 +13,16 @@ class HeadHunterAPI(GetVacanciesAPI):
         self.__params = {"text": "", "per_page": "", "page": 0, "only_with_salary": True}
         self.__vacancies = []
 
+    def response_status(self, response):
+        if response.status_code != 200:
+            raise Exception(f"Ошибка подключения: {response.status_code}")
+
+    def get_data(self, params):
+        response = requests.get(self.__url, headers=self.__headers, params=params)
+        self.response_status(response)
+        return response.json()
+
+
     def get_response(self, keyword, per_page, salary_rang) -> Response:
         self.__params["text"] = keyword
         self.__params["per_page"] = per_page
@@ -26,3 +36,4 @@ class HeadHunterAPI(GetVacanciesAPI):
 
     def get_vacancies(self, keyword: str, per_page: int, salary_rang: int):
         return self.get_response(keyword, per_page, salary_rang).json()["items"]
+

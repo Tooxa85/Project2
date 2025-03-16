@@ -5,9 +5,6 @@ class Saver(ABC):
     """Абстрактный класс для записи в файл"""
 
     @abstractmethod
-    def __init__(self, filename):
-        self.filename = filename
-    @abstractmethod
     def write_data(self, vacancies):
         pass
 
